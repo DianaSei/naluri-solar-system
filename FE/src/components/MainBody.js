@@ -12,10 +12,10 @@ class MainBody extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          let d = 2 * this.state.radius * result.valuePi;
+          let circumference = 2 * this.state.radius * result.valuePi;
           this.setState({
             valuePi: result.valuePi,
-            valueSun: d.toFixed()
+            valueSun: circumference.toFixed()
           });
         },
       )
