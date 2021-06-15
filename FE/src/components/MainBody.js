@@ -1,13 +1,35 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 
-function MainBody(){
-  return(
-    <Fragment>
-      <h1>Space project</h1>
-      <p className="mb-0">Current known value of Pi: </p>
-      <p className="mb-0">Circumference of the sun: </p>
-    </Fragment>
-  )
+class MainBody extends React.Component {
+  state = {
+    valuePi: null,
+    valueSun: 0,
+    radius: 696340
+  }
+
+  componentWillMount () {
+    fetch("http://localhost:3080/get-numbers")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          let d = 2 * this.state.radius * result.valuePi;
+          this.setState({
+            valuePi: result.valuePi,
+            valueSun: d.toFixed()
+          });
+        },
+      )
+  }
+
+  render () {
+    return(
+      <Fragment>
+        <h1>Space project</h1>
+        <p className="mb-0">Current known value of Pi: {this.state.valuePi}</p>
+        <p className="mb-0">Circumference of the sun: {this.state.valueSun.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} km</p>
+      </Fragment>
+    )
+  }
 }
 
 export default MainBody;

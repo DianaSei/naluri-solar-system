@@ -1,8 +1,10 @@
 const express = require("express");
+var cors = require('cors');
 var app = express();
+app.use(cors());
 
-app.get("/",function(request,response){
-  response.send("Hello World!")
+app.get("/get-numbers",function(request,response){
+  response.send({valuePi: pi})
 });
 
 var pi = 3;
