@@ -3,7 +3,19 @@ var cors = require('cors');
 var app = express();
 app.use(cors());
 
-app.get("/get-numbers",function(request,response){
+var whitelist = ['http://localhost:3000']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+
+app.get("/get-numbers", cors(corsOptions), function(request,response){
   response.send({valuePi: pi})
 });
 
