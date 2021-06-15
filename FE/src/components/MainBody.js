@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 class MainBody extends React.Component {
   state = {
-    valuePi: null,
+    valuePi: 0,
     valueSun: 0,
     radius: 696340
   }
