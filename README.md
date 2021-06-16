@@ -11,5 +11,5 @@ npm start
 
 # additional thoughts
 
-In this assignment I couldn't really show the proper structure of node.js or React.js apps as the assigniment wasn't big and didn't require extra pages or components. 
+The limitation is gonna be the Pi number stored as Math.PI (3.141592653589793), after 16 matched digits the results might be not accurate.
 
